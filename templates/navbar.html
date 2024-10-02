@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('index')}}">SPG</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('dashboard')}}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('show_passwords')}}">Passwords</a>
+          </li>
+          
+        </ul>
+        
+        <form method="POST" action="{{ url_for('search_password')}}" class="d-flex" role="search">
+          {{ form.hidden_tag() }}
+          {% if current_user.is_authenticated %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="btn btn-outline-dark" aria-current="page" href="{{ url_for('dashboard')}}">@{{ current_user.username }}</a>
+                </li>
+              </ul>
+            </div>
+            &nbsp;&nbsp;
+            <input name="search_query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <a class="btn btn-outline-danger" href="{{ url_for('logout') }}">Logout</a>&nbsp;&nbsp;
+          {% else %}
+            <a class="btn btn-light" href="{{ url_for('login') }}">Login</a>&nbsp;&nbsp;
+            <a class="btn btn-light" href="{{ url_for('registration') }}">Register</a>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </nav>

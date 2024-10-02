@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1> Become a User </h1>
+<br>
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.username.label(class="form-label")}}
+    {{ form.username(class="form-control")}}
+    <br>
+    {{ form.password.label(class="form-label")}}
+    {{ form.password(class="form-control")}}
+    <br>
+
+    {{ form.confirm_password.label(class="form-label")}}
+    {{ form.confirm_password(class="form-control")}}
+    
+    <br>
+    {{ form.submit(class="btn btn-primary")}}
+
+</form>
+
+
+<br><br>
+
+{% endblock %}
+

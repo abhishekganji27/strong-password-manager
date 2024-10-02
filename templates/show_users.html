@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+{% endfor %}
+
+<center><h1> All Users </h1></center> &nbsp;&nbsp;
+<table class="table table-hover" id="table">
+    <thead class="table-light"> 
+    <tr>
+        <td>ID</td>
+        <td>User</td>
+        <td>Password</td>
+        <td>Date Added</td>
+    </tr>
+    </thead>
+    {% for user in all_users %}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.date_created}}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+<script src="{{ url_for('static', filename='js/copyButton.js')}}"></script>
+
+{% endblock %}
+
